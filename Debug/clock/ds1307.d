@@ -22,7 +22,8 @@ clock/ds1307.d clock/ds1307.o: ../clock/ds1307.c ../clock/ds1307.h \
  ../clock/../lcd/lcd1602.h ../clock/../lcd/../main.h \
  ../clock/../clock/ds1307.h ../clock/../pwm/pwm.h \
  ../clock/../pwm/../main.h ../clock/../dht11/dht11.h \
- ../clock/../dht11/../main.h ../clock/../lcd/lcd1602.h
+ ../clock/../dht11/../main.h ../clock/../uart/uart.h \
+ ../clock/../uart/../main.h ../clock/../lcd/lcd1602.h
 
 ../clock/ds1307.h:
 
@@ -79,5 +80,9 @@ c:\program\ files\microchip\xc8\v2.36\avr\avr\include\stdlib.h:
 ../clock/../dht11/dht11.h:
 
 ../clock/../dht11/../main.h:
+
+../clock/../uart/uart.h:
+
+../clock/../uart/../main.h:
 
 ../clock/../lcd/lcd1602.h:

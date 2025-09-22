@@ -20,7 +20,8 @@ main.d main.o: .././main.c .././main.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\stdlib.h \
  .././lcd/lcd1602.h .././lcd/../main.h .././clock/ds1307.h \
  .././clock/../main.h .././pwm/pwm.h .././pwm/../main.h \
- .././dht11/dht11.h .././dht11/../main.h
+ .././dht11/dht11.h .././dht11/../main.h .././uart/uart.h \
+ .././uart/../main.h
 
 .././main.h:
 
@@ -77,3 +78,7 @@ c:\program\ files\microchip\xc8\v2.36\avr\avr\include\stdlib.h:
 .././dht11/dht11.h:
 
 .././dht11/../main.h:
+
+.././uart/uart.h:
+
+.././uart/../main.h:

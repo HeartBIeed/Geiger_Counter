@@ -12,3 +12,5 @@ main.c
 
 pwm\pwm.c
 
+uart\uart.c
+

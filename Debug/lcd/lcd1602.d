@@ -21,7 +21,8 @@ lcd/lcd1602.d lcd/lcd1602.o: ../lcd/lcd1602.c ../lcd/lcd1602.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\stdlib.h \
  ../lcd/../lcd/lcd1602.h ../lcd/../clock/ds1307.h \
  ../lcd/../clock/../main.h ../lcd/../pwm/pwm.h ../lcd/../pwm/../main.h \
- ../lcd/../dht11/dht11.h ../lcd/../dht11/../main.h
+ ../lcd/../dht11/dht11.h ../lcd/../dht11/../main.h ../lcd/../uart/uart.h \
+ ../lcd/../uart/../main.h
 
 ../lcd/lcd1602.h:
 
@@ -78,3 +79,7 @@ c:\program\ files\microchip\xc8\v2.36\avr\avr\include\stdlib.h:
 ../lcd/../dht11/dht11.h:
 
 ../lcd/../dht11/../main.h:
+
+../lcd/../uart/uart.h:
+
+../lcd/../uart/../main.h:

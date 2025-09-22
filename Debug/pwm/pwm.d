@@ -20,7 +20,7 @@ pwm/pwm.d pwm/pwm.o: ../pwm/pwm.c ../pwm/pwm.h ../pwm/../main.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\stdlib.h \
  ../pwm/../lcd/lcd1602.h ../pwm/../lcd/../main.h ../pwm/../clock/ds1307.h \
  ../pwm/../clock/../main.h ../pwm/../pwm/pwm.h ../pwm/../dht11/dht11.h \
- ../pwm/../dht11/../main.h
+ ../pwm/../dht11/../main.h ../pwm/../uart/uart.h ../pwm/../uart/../main.h
 
 ../pwm/pwm.h:
 
@@ -77,3 +77,7 @@ c:\program\ files\microchip\xc8\v2.36\avr\avr\include\stdlib.h:
 ../pwm/../dht11/dht11.h:
 
 ../pwm/../dht11/../main.h:
+
+../pwm/../uart/uart.h:
+
+../pwm/../uart/../main.h:

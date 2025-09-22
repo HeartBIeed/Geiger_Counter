@@ -36,6 +36,7 @@ SUBDIRS :=  \
 ../lcd \
 ../clock \
 ../dht11 \
+../uart \
 ../pwm
 
 
@@ -45,7 +46,8 @@ C_SRCS +=  \
 ../dht11/dht11.c \
 ../lcd/lcd1602.c \
 ../main.c \
-../pwm/pwm.c
+../pwm/pwm.c \
+../uart/uart.c
 
 
 PREPROCESSING_SRCS += 
@@ -59,28 +61,32 @@ clock/ds1307.o \
 dht11/dht11.o \
 lcd/lcd1602.o \
 main.o \
-pwm/pwm.o
+pwm/pwm.o \
+uart/uart.o
 
 OBJS_AS_ARGS +=  \
 clock/ds1307.o \
 dht11/dht11.o \
 lcd/lcd1602.o \
 main.o \
-pwm/pwm.o
+pwm/pwm.o \
+uart/uart.o
 
 C_DEPS +=  \
 clock/ds1307.d \
 dht11/dht11.d \
 lcd/lcd1602.d \
 main.d \
-pwm/pwm.d
+pwm/pwm.d \
+uart/uart.d
 
 C_DEPS_AS_ARGS +=  \
 clock/ds1307.d \
 dht11/dht11.d \
 lcd/lcd1602.d \
 main.d \
-pwm/pwm.d
+pwm/pwm.d \
+uart/uart.d
 
 OUTPUT_FILE_PATH +=Geiger.elf
 
@@ -125,6 +131,13 @@ lcd/lcd1602.o: ../lcd/lcd1602.c
 	
 
 pwm/pwm.o: ../pwm/pwm.c
+	@echo Building file: $<
+	@echo Invoking: XC8 C Compiler : 2.36
+	$(QUOTE)C:\Program Files\Microchip\xc8\v2.36\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATmega16  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATmega16__ -DDEBUG  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+uart/uart.o: ../uart/uart.c
 	@echo Building file: $<
 	@echo Invoking: XC8 C Compiler : 2.36
 	$(QUOTE)C:\Program Files\Microchip\xc8\v2.36\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATmega16  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATmega16__ -DDEBUG  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

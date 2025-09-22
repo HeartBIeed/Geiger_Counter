@@ -14,6 +14,7 @@
 #include "clock/ds1307.h"
 #include "pwm/pwm.h"
 #include "dht11/dht11.h"
+#include "uart/uart.h"
 
 
 
