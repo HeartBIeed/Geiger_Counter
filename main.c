@@ -61,13 +61,12 @@ int main(void)
 
 
 // ------------DHT11-----------------------
-	char data[13] = "T:25°C H:60%";
-//	dht_write_data(data);
-	setpos(0,1);
-	send_ptr_str(data);
-
+ 	char data[16];
+	 // = "H:60% T:25\xDF" "C";
 
 uint32_t start = 0;
+uint32_t start2 = 0;
+
 DDRD |= (1<<6);
 
 
@@ -76,6 +75,18 @@ while(1)
 		
 		
 		time_to_lcd();
+//---------------------------------		
+if (ms_cnt - start2 >= 1000)
+{
+
+ 	dht_write_data(data);
+ 	setpos(0,1);
+ 	send_ptr_str(data);
+		start2 = get_mills();
+	}
+
+	 
+//--------------------------	 
 
 		if (data_ready)
 		{
@@ -92,7 +103,9 @@ if (ms_cnt - start >= 5000)
 	{
 		//char ch ='0' + (count % 10);
 		setpos(10,0);
-		sendchar('A');
+		sendchar('*');
+
+
 		start = get_mills();
 	}
 
