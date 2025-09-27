@@ -53,8 +53,9 @@ void dht_write_data(char* data) // пишет в массив дата стро�
 	D_RH = dht_receive_data(); // дробная*/
 	I_TEMP = dht_receive_data();
 	D_TEMP = dht_receive_data();
-
-	sprintf(data,"%d.%d %d.%d\xDF" "C",  I_RH, D_RH,I_TEMP, D_TEMP);
+	
+sprintf(data,"%d %d", I_RH,I_TEMP);
+//	sprintf(data,"%d.%d %d.%d\xDF" "C",  I_RH, D_RH,I_TEMP, D_TEMP);
 
 }
 

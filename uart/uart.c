@@ -41,6 +41,8 @@ void UART_read_data()
 		{
 		data_ready = 0;	
 		uart_rx_buffer[uart_rx_index] = received_byte;
+		uart_rx_index++;
+
 		}
 		
 	if (uart_rx_index >= sizeof(uart_rx_buffer))

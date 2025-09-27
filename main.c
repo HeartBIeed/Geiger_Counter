@@ -2,10 +2,12 @@
 
 
 volatile uint32_t count = 0;
-
 volatile uint32_t  ms_cnt= 0;// счетчик ms
+volatile uint8_t gamma = 0;
 
 
+
+//------------------timer 0 for mills----------------------------------
 void timer_ini(void) // timer0
 {
 	TCCR0 = (1<<WGM01)|(1<<CS00)|(1<<CS01); // Вкл СТС, Выбор делителя частота/64
@@ -21,29 +23,37 @@ ISR(TIMER0_COMP_vect) //Обработка прерывания. В скобках вектор пр-ния по перепол
 	ms_cnt++;
 }
 
-
-ISR(INT0_vect)
-{
-	count++;
-}
 uint32_t get_mills()
 {
 	return ms_cnt;
 }
 
+//--------------------gamma -----------
+ISR(INT0_vect) // count gamma
+{
+	count++;
+	gamma = 1;
+}
+
+
 int main(void)
 {
-	//------------------------ interrupt
-	MCUCR  = (1<<ISC00)|(1<<ISC01); // rising INT0
-	GICR |= (1<<INT0); // int 0 enable
+	
 	
 	sei();
 	timer_ini();
 	LCD_ini_1602();
 	USART_ini(103);
  	USART_TX('A');
+//------------------------ interrupt--------------
 
+	MCUCR  = (1<<ISC00)|(1<<ISC01); // rising INT0
+	GICR |= (1<<INT0); // int 0 enable
 	
+//------------------------set ds1307-----------------
+	
+//set_time(23,26);
+
 //------------------PWM---------------------
 
 		uint16_t top = freq(3000,8);
@@ -55,28 +65,32 @@ int main(void)
 	pwm_init_lcd(); //подсветка лсд
 		OCR0 = pwm_proc(10); //10%
 
-		
-
-
 
 
 // ------------DHT11-----------------------
  	char data[16];
 	 // = "H:60% T:25\xDF" "C";
+DDRD |= (1<<6); // pin PD6
 
+
+
+//----------------------------------------------
 uint32_t start = 0;
 uint32_t start2 = 0;
 
-DDRD |= (1<<6);
+
 
 
 while(1)
 	{	
 		
+//----------------time to lcd ----------------
 		
 		time_to_lcd();
-//---------------------------------		
-if (ms_cnt - start2 >= 1000)
+		
+		
+//------------------- dht to lcd -------------		
+if (ms_cnt - start2 >= 3000)
 {
 
  	dht_write_data(data);
@@ -86,33 +100,41 @@ if (ms_cnt - start2 >= 1000)
 	}
 
 	 
-//--------------------------	 
+//---------------uart -------------------------	 
 
 		if (data_ready)
 		{
-			if (uart_rx_buffer[0]=='q')
+			if (received_byte=='q')
 			{
-				PORTD |= (1<<PORTD6);
+				PORTD ^= (1<<PORTD6);
 				data_ready = 0;
 			}
 			
 
 		}
-	 
-if (ms_cnt - start >= 5000)
+
+
+//--------------gamma-------------------
+		setpos(12,0);
+		sendchar(count);
+
+
+	if (gamma)
 	{
-		//char ch ='0' + (count % 10);
-		setpos(10,0);
-		sendchar('*');
+	setpos(11,0);
+	sendchar('G');
+		
+			if (ms_cnt - start >= 1000)
+			{
+			setpos(11,0);
+			sendchar(' ');
+			gamma = 0;
+			start = get_mills();
+			}
 
-
-		start = get_mills();
 	}
-
-
-
-
-
-
+	
+	
+	
 	}
 }
