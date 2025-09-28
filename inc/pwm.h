@@ -1,7 +1,7 @@
 #ifndef PWM_H_
 #define PWM_H_
 
-#include "../main.h"
+#include "main.h"
 
 
 void pwm_init(uint16_t top);

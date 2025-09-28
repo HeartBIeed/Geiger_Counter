@@ -1,9 +1,9 @@
-#include "main.h"
+#include "../inc/main.h"
 
 
 volatile uint32_t count = 0;
 volatile uint32_t  ms_cnt= 0;// счетчик ms
-volatile uint8_t gamma = 0;
+volatile uint32_t gamma = 0;
 
 
 

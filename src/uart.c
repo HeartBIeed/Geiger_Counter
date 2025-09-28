@@ -1,4 +1,4 @@
-#include "uart.h"
+#include "../inc/uart.h"
 
 volatile uint8_t received_byte = 0;
 volatile uint8_t data_ready = 0;

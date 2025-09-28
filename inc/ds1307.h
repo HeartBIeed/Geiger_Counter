@@ -1,7 +1,7 @@
 #ifndef DS1307_H_
 #define DS1307_H_
 
-#include "../main.h"
+#include "main.h"
 
 void lcd_print_number(unsigned char num);
 void set_time(uint32_t h,uint32_t m);

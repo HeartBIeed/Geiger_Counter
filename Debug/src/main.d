@@ -1,5 +1,4 @@
-clock/ds1307.d clock/ds1307.o: ../clock/ds1307.c ../clock/ds1307.h \
- ../clock/../main.h \
+src/main.d src/main.o: ../src/main.c ../src/../inc/main.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\io.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\sfr_defs.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\inttypes.h \
@@ -19,15 +18,10 @@ clock/ds1307.d clock/ds1307.o: ../clock/ds1307.c ../clock/ds1307.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\math.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\stdio.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\stdlib.h \
- ../clock/../lcd/lcd1602.h ../clock/../lcd/../main.h \
- ../clock/../clock/ds1307.h ../clock/../pwm/pwm.h \
- ../clock/../pwm/../main.h ../clock/../dht11/dht11.h \
- ../clock/../dht11/../main.h ../clock/../uart/uart.h \
- ../clock/../uart/../main.h ../clock/../lcd/lcd1602.h
+ ../src/../inc/lcd1602.h ../src/../inc/main.h ../src/../inc/ds1307.h \
+ ../src/../inc/pwm.h ../src/../inc/dht11.h ../src/../inc/uart.h
 
-../clock/ds1307.h:
-
-../clock/../main.h:
+../src/../inc/main.h:
 
 c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\io.h:
 
@@ -67,22 +61,14 @@ c:\program\ files\microchip\xc8\v2.36\avr\avr\include\stdio.h:
 
 c:\program\ files\microchip\xc8\v2.36\avr\avr\include\stdlib.h:
 
-../clock/../lcd/lcd1602.h:
+../src/../inc/lcd1602.h:
 
-../clock/../lcd/../main.h:
+../src/../inc/main.h:
 
-../clock/../clock/ds1307.h:
+../src/../inc/ds1307.h:
 
-../clock/../pwm/pwm.h:
+../src/../inc/pwm.h:
 
-../clock/../pwm/../main.h:
+../src/../inc/dht11.h:
 
-../clock/../dht11/dht11.h:
-
-../clock/../dht11/../main.h:
-
-../clock/../uart/uart.h:
-
-../clock/../uart/../main.h:
-
-../clock/../lcd/lcd1602.h:
+../src/../inc/uart.h:

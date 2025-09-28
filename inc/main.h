@@ -10,11 +10,11 @@
 #include <stdlib.h>
 
 //#include "dht11/dht.h"
-#include "lcd/lcd1602.h"
-#include "clock/ds1307.h"
-#include "pwm/pwm.h"
-#include "dht11/dht11.h"
-#include "uart/uart.h"
+#include "lcd1602.h"
+#include "ds1307.h"
+#include "pwm.h"
+#include "dht11.h"
+#include "uart.h"
 
 
 

@@ -1,5 +1,5 @@
-  #include "ds1307.h"
-  #include "../lcd/lcd1602.h"
+  #include "../inc/ds1307.h"
+  #include "../inc/lcd1602.h"
 
 unsigned char hour,min,sec;
 

@@ -1,4 +1,4 @@
-#include "dht11.h"
+#include "../inc/dht11.h"
 
 
 void dht_request() //start down-up

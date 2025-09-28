@@ -1,5 +1,5 @@
-dht11/dht11.d dht11/dht11.o: ../dht11/dht11.c ../dht11/dht11.h \
- ../dht11/../main.h \
+src/ds1307.d src/ds1307.o: ../src/ds1307.c ../src/../inc/ds1307.h \
+ ../src/../inc/main.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\io.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\sfr_defs.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\inttypes.h \
@@ -19,15 +19,12 @@ dht11/dht11.d dht11/dht11.o: ../dht11/dht11.c ../dht11/dht11.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\math.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\stdio.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\stdlib.h \
- ../dht11/../lcd/lcd1602.h ../dht11/../lcd/../main.h \
- ../dht11/../clock/ds1307.h ../dht11/../clock/../main.h \
- ../dht11/../pwm/pwm.h ../dht11/../pwm/../main.h \
- ../dht11/../dht11/dht11.h ../dht11/../uart/uart.h \
- ../dht11/../uart/../main.h
+ ../src/../inc/lcd1602.h ../src/../inc/ds1307.h ../src/../inc/pwm.h \
+ ../src/../inc/dht11.h ../src/../inc/uart.h ../src/../inc/lcd1602.h
 
-../dht11/dht11.h:
+../src/../inc/ds1307.h:
 
-../dht11/../main.h:
+../src/../inc/main.h:
 
 c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\io.h:
 
@@ -67,20 +64,14 @@ c:\program\ files\microchip\xc8\v2.36\avr\avr\include\stdio.h:
 
 c:\program\ files\microchip\xc8\v2.36\avr\avr\include\stdlib.h:
 
-../dht11/../lcd/lcd1602.h:
+../src/../inc/lcd1602.h:
 
-../dht11/../lcd/../main.h:
+../src/../inc/ds1307.h:
 
-../dht11/../clock/ds1307.h:
+../src/../inc/pwm.h:
 
-../dht11/../clock/../main.h:
+../src/../inc/dht11.h:
 
-../dht11/../pwm/pwm.h:
+../src/../inc/uart.h:
 
-../dht11/../pwm/../main.h:
-
-../dht11/../dht11/dht11.h:
-
-../dht11/../uart/uart.h:
-
-../dht11/../uart/../main.h:
+../src/../inc/lcd1602.h:

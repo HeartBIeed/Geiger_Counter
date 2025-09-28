@@ -1,4 +1,4 @@
-#include "pwm.h"
+#include "../inc/pwm.h"
 
 
 uint16_t freq(uint16_t f_pwm,  uint16_t prescaler)

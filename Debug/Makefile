@@ -33,21 +33,18 @@ LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
-../lcd \
-../clock \
-../dht11 \
-../uart \
-../pwm
+../inc \
+../src
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../clock/ds1307.c \
-../dht11/dht11.c \
-../lcd/lcd1602.c \
-../main.c \
-../pwm/pwm.c \
-../uart/uart.c
+../src/dht11.c \
+../src/ds1307.c \
+../src/lcd1602.c \
+../src/main.c \
+../src/pwm.c \
+../src/uart.c
 
 
 PREPROCESSING_SRCS += 
@@ -57,36 +54,36 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-clock/ds1307.o \
-dht11/dht11.o \
-lcd/lcd1602.o \
-main.o \
-pwm/pwm.o \
-uart/uart.o
+src/dht11.o \
+src/ds1307.o \
+src/lcd1602.o \
+src/main.o \
+src/pwm.o \
+src/uart.o
 
 OBJS_AS_ARGS +=  \
-clock/ds1307.o \
-dht11/dht11.o \
-lcd/lcd1602.o \
-main.o \
-pwm/pwm.o \
-uart/uart.o
+src/dht11.o \
+src/ds1307.o \
+src/lcd1602.o \
+src/main.o \
+src/pwm.o \
+src/uart.o
 
 C_DEPS +=  \
-clock/ds1307.d \
-dht11/dht11.d \
-lcd/lcd1602.d \
-main.d \
-pwm/pwm.d \
-uart/uart.d
+src/dht11.d \
+src/ds1307.d \
+src/lcd1602.d \
+src/main.d \
+src/pwm.d \
+src/uart.d
 
 C_DEPS_AS_ARGS +=  \
-clock/ds1307.d \
-dht11/dht11.d \
-lcd/lcd1602.d \
-main.d \
-pwm/pwm.d \
-uart/uart.d
+src/dht11.d \
+src/ds1307.d \
+src/lcd1602.d \
+src/main.d \
+src/pwm.d \
+src/uart.d
 
 OUTPUT_FILE_PATH +=Geiger.elf
 
@@ -102,42 +99,42 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-clock/ds1307.o: ../clock/ds1307.c
+src/dht11.o: ../src/dht11.c
 	@echo Building file: $<
 	@echo Invoking: XC8 C Compiler : 2.36
 	$(QUOTE)C:\Program Files\Microchip\xc8\v2.36\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATmega16  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATmega16__ -DDEBUG  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-dht11/dht11.o: ../dht11/dht11.c
+src/ds1307.o: ../src/ds1307.c
 	@echo Building file: $<
 	@echo Invoking: XC8 C Compiler : 2.36
 	$(QUOTE)C:\Program Files\Microchip\xc8\v2.36\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATmega16  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATmega16__ -DDEBUG  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-lcd/lcd1602.o: ../lcd/lcd1602.c
+src/lcd1602.o: ../src/lcd1602.c
 	@echo Building file: $<
 	@echo Invoking: XC8 C Compiler : 2.36
 	$(QUOTE)C:\Program Files\Microchip\xc8\v2.36\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATmega16  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATmega16__ -DDEBUG  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-./main.o: .././main.c
+src/main.o: ../src/main.c
 	@echo Building file: $<
 	@echo Invoking: XC8 C Compiler : 2.36
 	$(QUOTE)C:\Program Files\Microchip\xc8\v2.36\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATmega16  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATmega16__ -DDEBUG  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-pwm/pwm.o: ../pwm/pwm.c
+src/pwm.o: ../src/pwm.c
 	@echo Building file: $<
 	@echo Invoking: XC8 C Compiler : 2.36
 	$(QUOTE)C:\Program Files\Microchip\xc8\v2.36\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATmega16  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATmega16__ -DDEBUG  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-uart/uart.o: ../uart/uart.c
+src/uart.o: ../src/uart.c
 	@echo Building file: $<
 	@echo Invoking: XC8 C Compiler : 2.36
 	$(QUOTE)C:\Program Files\Microchip\xc8\v2.36\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATmega16  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATmega16__ -DDEBUG  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

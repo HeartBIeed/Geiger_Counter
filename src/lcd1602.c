@@ -1,4 +1,4 @@
-#include "lcd1602.h"
+#include "../inc/lcd1602.h"
 
 void sendbyte(unsigned char c);
 void send(unsigned char c,unsigned char mode);

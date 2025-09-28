@@ -1,7 +1,7 @@
 #ifndef LCD1602_H_
 #define LCD1602_H_
 
-#include "../main.h"
+#include "main.h"
 #define E1 PORTA|=0b00001000 // установка линии E в 1 стробирующая шина
 #define E0 PORTA&=0b11110111 // установка линии E в 0
 #define RS1 PORTA|=0b00000100 // установка линии RS в 1 (данные)

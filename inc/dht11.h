@@ -1,7 +1,7 @@
 #ifndef DHT11_H_
 #define DHT11_H_
 
-#include "../main.h"
+#include "main.h"
 
 
 

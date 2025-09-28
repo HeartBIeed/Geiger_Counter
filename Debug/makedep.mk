@@ -2,15 +2,15 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-clock\ds1307.c
+src\dht11.c
 
-dht11\dht11.c
+src\ds1307.c
 
-lcd\lcd1602.c
+src\lcd1602.c
 
-main.c
+src\main.c
 
-pwm\pwm.c
+src\pwm.c
 
-uart\uart.c
+src\uart.c
 
