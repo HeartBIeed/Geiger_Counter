@@ -58,15 +58,8 @@ void USART_echo()
 	}
 
 	
-int main(void)
-{
-	
-	sei();
-	USART_init(103); //9600
-	USART_send_str("ON Chip\r\n");
 
-    while(1)
-    {
+/*
 		if (data_ready)
 		{
 			if (strncmp((char*)data_buffer,"ping",4) == 0) //4 первых символа стравниваем
@@ -89,5 +82,4 @@ int main(void)
 		data_ready = 0;
 
 		}					
-    }
-}
+*/

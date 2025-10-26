@@ -102,8 +102,3 @@ void create_symb(uint8_t index_symb, const uint8_t *data)
 			}
 
 	}
-
-/*
-		PORTA &= 0xF; // отчистка старшей тетрады порта
-		PORTA  |= c; // отправляем старшую тетраду
-*/

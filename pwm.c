@@ -1,4 +1,4 @@
-#include "../inc/pwm.h"
+#include "pwm.h"
 
 
 uint16_t freq(uint16_t f_pwm,  uint16_t prescaler)
@@ -29,7 +29,6 @@ void pwm_init_lcd(void)
 	
 	TCNT0 = 0;
 	TCCR0 = (1 << WGM00) | (1 << WGM01)|(1 << COM01)|(1 << CS01)|(1 << CS00);
-	// FastPWM / предделитель
 }
 
 
@@ -43,7 +42,7 @@ void set_duty(uint16_t A,uint16_t B)
 }
 
 
-int pwm_proc(int p) //Проценты в число
+int pwm_proc(int p) 
 {
 	unsigned int result;
 	result = (p*255)/100;

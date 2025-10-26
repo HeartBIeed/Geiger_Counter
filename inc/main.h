@@ -12,7 +12,6 @@
 #include "lcd1602.h"
 #include "ds1307.h"
 #include "pwm.h"
-#include "dht11.h"
 #include "uart.h"
 
 
