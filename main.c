@@ -68,15 +68,15 @@ int main(void)
 
 
 // ------------DHT11-----------------------
- 	char data[16];
+ /*	char data[16];
 
 DDRD |= (1<<7); // pin PD7
 
 	 // = "H:60% T:25\xDF" "C";
-
+*/
 //----------------------------------------------
 uint32_t start = 0;
-uint32_t start2 = 0;
+//uint32_t start2 = 0;
 uint32_t start3 = 0;
 
 uint32_t start_cnt = 0;
@@ -96,7 +96,7 @@ if (ms_cnt - start3 >= 500)
 		
 		
 //------------------- dht to lcd -------------		
-
+/*
 if (ms_cnt - start2 >= 3000)
 {
 
@@ -106,7 +106,7 @@ if (ms_cnt - start2 >= 3000)
 	 
 		start2 = get_mills();
 	}
-
+*/
 	 
 //---------------uart -------------------------	 
 

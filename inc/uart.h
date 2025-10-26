@@ -1,16 +1,25 @@
 #ifndef UART_H_
 #define UART_H_
 
-#include "main.h"
 
-ISR(USART_RXC_vect);
-void USART_ini(uint16_t speed);
-void USART_TX(unsigned int data);
-void UART_read_data();
+#define F_CPU 8000000UL
 
-extern volatile uint8_t uart_received_byte;
-extern volatile uint8_t uart_data_ready;
-extern volatile uint8_t uart_rx_buffer[32];
-extern volatile uint8_t uart_rx_index;
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <util/delay.h>
+
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/* Прототипы
+
+void USART_init(uint16_t speed);
+void USART_send_str(const char *str); // Отправка строки
+void USART_echo(); //эхо
+
+*/
+
 
 #endif /* UART_H_ */
