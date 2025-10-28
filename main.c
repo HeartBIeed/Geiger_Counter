@@ -38,7 +38,10 @@ ISR(INT0_vect) // внешнее прерывание PD2
 int main(void)
 {
 	
-	
+uint8_t gamma_array[4]={0};
+uint8_t index_garray = 0;
+uint8_t index_gbit = 0;
+
 	sei();
 	timer_ini();
 	i2c_init();		
@@ -59,7 +62,7 @@ int main(void)
 
 //------------------PWM---------------------
 
-	uint16_t top = freq(3000,8);
+	uint16_t top = freq(2000,8);
 		pwm_init(top);//шим HV генератора (PD4,PD50
 		
 	uint16_t dt1 = pwm_proc(50);
@@ -80,7 +83,7 @@ while(1)
 	{	
 		
 //----------------time to lcd ----------------
-if (ms_cnt - start[1] >= 900)
+if (ms_cnt - start[1] >= 500)
 {		
 		time_to_lcd(0,0);
 		
@@ -132,7 +135,25 @@ if (data_ready)
 
 		}
 		
-	
+	//********************************** */
+
+	if (ms_cnt - start[2] >= 1000)
+	{		
+
+		index_gbit++;
+
+			if (index_gbit>=8)
+			{		
+				index_garray ++;			
+				index_gbit = 0;
+					if (index_garray>=5)
+					index_garray =0;
+			}
+
+		gamma_array[index_garray]&= ~(1<<index_gbit);
+	}
+
+
 	
 	}
 }

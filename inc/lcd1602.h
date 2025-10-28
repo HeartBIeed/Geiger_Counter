@@ -5,15 +5,14 @@
 
 // ------- Выбрать и настроить порт: ------- 
 
-#define	SETPORT	DDRA=0xFF;
-#define	MODEPORT PORTA=0x01;
+#define	SETPORT	DDRA=0xFE;
+#define	MODEPORT PORTA=0x00;
 
 #define E1 PORTA|=0x8; // установка линии E в 1 стробирующая шина
-#define E0 PORTA&=0x4; // установка линии E в 0
-#define RS1 PORTA|=0xF7; // установка линии RS в 1 (данные)
-#define RS0 PORTA&=0xFB; // установка линии RS в 0 (команда)
+#define E0 PORTA &=0xF7; // установка линии E в 0
+#define RS1 PORTA|=0x4; // установка линии RS в 1 (данные)
+#define RS0 PORTA &=0xFB; // установка линии RS в 0 (команда)
 
-#define	SNDBYTE PORTA=byte; // отправляем старшую тетраду в функции send_nibble
 
 // ------- Конец настроек порта ------- 
 

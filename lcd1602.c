@@ -29,7 +29,7 @@ void LCD1602_ini(void)
 
 	}
 
-void send_nibble(uint8_t byte) // отправка байта
+void send_nibble(uint8_t byte) // отправка полубайта
 	{
 		
 		byte<<=4; // сдвигаем байт младшей тетрадой к старшей
@@ -38,9 +38,8 @@ void send_nibble(uint8_t byte) // отправка байта
 		_delay_us(50);
 
 		PORTA &= 0xF; // отчистка старшей тетрады порта
-		PORTA=byte; 
-		//SNDBYTE // отправляем старшую тетраду
-		
+		PORTA |=byte; 
+
 		E0
 		_delay_us(50);
 			
@@ -102,3 +101,4 @@ void create_symb(uint8_t index_symb, const uint8_t *data)
 			}
 
 	}
+
