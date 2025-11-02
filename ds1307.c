@@ -2,6 +2,8 @@
 
 unsigned char hour,min,sec;
 
+//-------------- I2C --------------
+
 void i2c_init(void)
 	{
 	 TWBR = 0x20; //десятичное 32 частота 10kHZ при тактировании 8 мГц
@@ -25,20 +27,6 @@ void i2c_send(unsigned char data)
 	 while(!(TWCR&(1<<TWINT))); // TWINT ждем в нуле
 	}
 
-
-unsigned char DecToBSD(unsigned char chin) // 10 >> 0x10
-	{
-	 unsigned char chout = ((chin / 10)<<4)|(chin % 10);
-	 return chout;
-	}
-
-unsigned char BSDtoDec(unsigned char chin) // 0x10 >> 10
-	{
-	 unsigned char chout = ((chin >> 4 )*10) + (0b00001111 & chin);
-	 return chout;
-	}
-
-
 unsigned char i2c_read(void) 
 	{
 	 TWCR=(1<<TWINT)|(1<<TWEN)|(1<<TWEA);//TWEA - ведомый подтверждает АСК
@@ -54,17 +42,27 @@ unsigned char i2c_read_lastbyte(void) // чтение последнего ба�
 
 	}
 
-void lcd_print_number(unsigned char num) 
+//----------------------------
+
+
+unsigned char DecToBSD(unsigned char chin) // 10 >> 0x10
 	{
-	send_lcd_char((num / 10) + '0');  // десятки
-	send_lcd_char((num % 10) + '0');  // единицы
+	 unsigned char chout = ((chin / 10)<<4)|(chin % 10);
+	 return chout;
 	}
 
-void set_time(uint32_t h,uint32_t m)
+unsigned char BSDtoDec(unsigned char chin) // 0x10 >> 10
+	{
+	 unsigned char chout = ((chin >> 4 )*10) + (0b00001111 & chin);
+	 return chout;
+	}
+
+
+void set_time(uint32_t h,uint32_t m) // настройка времени
 	{
 	 i2c_init();
 
-	i2c_start(); // настройка времени
+	i2c_start(); 
 		i2c_send(0b11010000); // адрес 0x68 + 0 - бит отправки
 		i2c_send(0);
 		i2c_send(DecToBSD(0)); //секунды
@@ -73,6 +71,11 @@ void set_time(uint32_t h,uint32_t m)
 	i2c_stop();
 	} 
 
+void lcd_print_number(unsigned char num) 
+	{
+	send_lcd_char((num / 10) + '0');  // десятки
+	send_lcd_char((num % 10) + '0');  // единицы
+	}
 
 void time_to_lcd(int x,int y)
 	{
@@ -97,7 +100,7 @@ void time_to_lcd(int x,int y)
 	set_lcd_pos(x,y);
 
 	lcd_print_number(hour);
-	send_lcd_char(0x3A);
+	send_lcd_char(0x3A); // :
 	lcd_print_number(min);
 	send_lcd_char(0x3A);
 	lcd_print_number(sec);

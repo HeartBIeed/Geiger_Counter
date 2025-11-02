@@ -1,25 +1,25 @@
 MCU     = atmega16
 F_CPU   = 8000000UL
 TARGET  = main
-OUTPUT = build/
+OUTPUT = build
 CC      = avr-gcc
 OBJCOPY = avr-objcopy
 
 
 SRC     = $(wildcard *.c)
 HEADERS = $(wildcard inc/*.h)
-OBJ     = $(SRC:.c=.o)
+OBJ     = $(patsubst %.c, $(OUTPUT)/%.o, $(SRC))
 
 CFLAGS  = -mmcu=$(MCU) -DF_CPU=$(F_CPU) -Os -Iinc
 
-all: $(OUTPUT)$(TARGET).hex
+all: $(OUTPUT)/$(TARGET).hex
 
-$(OUTPUT)%.o: %.c $(HEADERS)
+$(OUTPUT)/%.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OUTPUT)$(TARGET).elf: $(OUTPUT)$(OBJ)
+$(OUTPUT)/$(TARGET).elf: $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 
-$(OUTPUT)$(TARGET).hex: $(OUTPUT)$(TARGET).elf
+$(OUTPUT)/$(TARGET).hex: $(OUTPUT)/$(TARGET).elf
 	$(OBJCOPY) -O ihex -R .eeprom $< $@
 
