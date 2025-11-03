@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "uart.h": "c",
-        "timer.h": "c"
+        "timer.h": "c",
+        "limits": "c"
     }
 }

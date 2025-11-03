@@ -22,7 +22,7 @@ void pwm_init(uint16_t top)
 
 }
 
-void pwm_init_lcd(void)
+void pwm_init_lcd(void) // ШИМ яркости подсветки LCD
 {
 	
 	DDRB|=(1<<3); //PB3
@@ -42,7 +42,7 @@ void set_duty(uint16_t A,uint16_t B)
 }
 
 
-int pwm_proc(int p) 
+int pwm_proc(int p) // проценты -> значение скважности от 0 до 255
 {
 	unsigned int result;
 	result = (p*255)/100;

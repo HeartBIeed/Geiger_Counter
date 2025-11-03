@@ -58,18 +58,20 @@ void USART_echo()
 	}
 
 	
-
-/*
+void get_usart_command()
+{
 		if (data_ready)
 		{
-			if (strncmp((char*)data_buffer,"ping",4) == 0) //4 первых символа стравниваем
+			if (strncmp((char*)data_buffer,"get",3) == 0) // сравниваем первые символы
 			{
-				USART_send_str("pong!!!\r\n");
+				USART_send_str(num_gm_cnt);
 			}
 
-			if (strncmp((char*)data_buffer,"cmd",3) == 0) //4 первых символа стравниваем
+			if (strncmp((char*)data_buffer,"time",4) == 0) 
 			{
-				USART_send_str("command\r\n");
+				char string[9];
+				sprintf(string, "%02d:%02d:%02d", hour, min, sec);
+				USART_send_str(string);
 			}
 
 			else
@@ -81,5 +83,7 @@ void USART_echo()
 
 		data_ready = 0;
 
-		}					
-*/
+		}		
+
+}
+

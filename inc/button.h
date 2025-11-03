@@ -7,6 +7,12 @@
 
 #include "main.h"
 
+enum button_state{
+    RELEASED,
+    PRESSED
+    };
+
+
 void buttons();
 void buttons_init();
 uint8_t debounce(uint8_t pin);

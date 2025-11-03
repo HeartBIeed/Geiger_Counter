@@ -8,6 +8,7 @@
 #include <util/delay.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "lcd1602.h"
 #include "ds1307.h"
@@ -16,7 +17,7 @@
 #include "timer.h"
 #include "button.h"
 
-
+extern char num_gm_cnt[4];
 
 #endif /* MAIN_H_ */
 
