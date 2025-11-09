@@ -10,7 +10,7 @@ SRC     = $(wildcard *.c)
 HEADERS = $(wildcard inc/*.h)
 OBJ     = $(patsubst %.c, $(OUTPUT)/%.o, $(SRC))
 
-CFLAGS  = -mmcu=$(MCU) -DF_CPU=$(F_CPU) -Os -Iinc 
+CFLAGS  = -mmcu=$(MCU) -DF_CPU=$(F_CPU) -Os -Iinc
 
 all: $(OUTPUT)/$(TARGET).hex
 

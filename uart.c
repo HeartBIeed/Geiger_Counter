@@ -62,17 +62,71 @@ void get_usart_command()
 {
 		if (data_ready)
 		{
-			if (strncmp((char*)data_buffer,"get",3) == 0) // сравниваем первые символы
+			if (strncmp((char*)data_buffer,"gamma",5) == 0) // сравниваем первые символы
 			{
-				USART_send_str(num_gm_cnt);
+
+				char string[32];
+				sprintf(string, "Gamma: %d uR\r\n",num_gm_cnt);
+				USART_send_str(string);
+
+				data_ready = 0;
+
 			}
 
 			if (strncmp((char*)data_buffer,"time",4) == 0) 
 			{
 				char string[9];
-				sprintf(string, "%02d:%02d:%02d", hour, min, sec);
+				sprintf(string, "%02d:%02d:%02d\r\n", hour, min, sec);
 				USART_send_str(string);
+
+				data_ready = 0;
+
 			}
+
+
+			if (strncmp((char*)data_buffer,"st",2) == 0) 
+			{
+
+				char *command = strtok(data_buffer," ");
+				char *st_hour = strtok(NULL, ",");
+				char *st_min = strtok(NULL, ",");
+
+				int hour = atoi(st_hour);
+				int minute = atoi(st_min);
+
+				set_time(hour,minute);
+
+				char string[32];
+				sprintf(string, "set time -> %02d:%02d\r\n", hour, minute);
+				USART_send_str(string);
+
+				data_ready = 0;
+
+			}
+
+
+			if (strncmp((char*)data_buffer,"snd",3) == 0) 
+			{
+
+				char *command = strtok(data_buffer," ");
+				char *sound_mode = strtok(NULL, ",");
+
+
+				if (strcmp(sound_mode, "on"))
+				{
+					PORTC |= (1<<7);
+					USART_send_str("Sound ON\r\n");
+				}
+				else if (strcmp(sound_mode, "off"))
+				{
+					PORTC &= ~(1<<7);
+					USART_send_str("Sound OFF\r\n");
+				}
+
+				data_ready = 0;
+
+			}
+
 
 			else
 			{
@@ -86,4 +140,3 @@ void get_usart_command()
 		}		
 
 }
-
