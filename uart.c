@@ -66,7 +66,7 @@ void get_usart_command()
 			{
 
 				char string[32];
-				sprintf(string, "Gamma: %d uR\r\n",num_gm_cnt);
+				sprintf(string, "Gamma: %d uR\r\n",(int)num_gm_cnt);
 				USART_send_str(string);
 
 				data_ready = 0;
