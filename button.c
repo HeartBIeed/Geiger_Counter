@@ -11,6 +11,10 @@ void buttons_init()
 
         DDRB |= (1<<2); // out
         PORTB |= (1<<2); // up
+
+        DDRD |= (1<<6); // snd pin to input
+
+
     }
 
 // Добавлен отладочный вывод и проверка настройки пинов

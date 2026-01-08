@@ -40,13 +40,14 @@ int main(void)
 	
 	sei();
 	timer_ini();
-	i2c_init();		
+//	i2c_init();		
 	buttons_init();
 	LCD1602_ini();
 	USART_init(103); //9600
 
 	USART_send_str("UART EN");
-	
+	set_time(15,43);
+
 //--------------------- interrupt -------------------
 
 	MCUCR  = (1<<ISC01); // falling INT0 
@@ -80,7 +81,7 @@ while(1)
 
 	buttons();
 	OCR0 = pwm_proc(light);
-
+/*
 	//----------------time to lcd ----------------
 	if (ms_cnt - start[1] >= 500)
 		{		
@@ -89,7 +90,7 @@ while(1)
 			start[1] = get_mills();
 		}
 
-
+*/
 	//-------------- Гамма счетчик-------------------
 
 
@@ -110,7 +111,7 @@ while(1)
 
 		}
 			
-	//********************************** */
+	//********************************** 
 
 	if (ms_cnt - start[0] >= 1000) // затираем G символ на LCD 
 		{

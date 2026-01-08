@@ -114,13 +114,13 @@ void get_usart_command()
 
 				if (strcmp(sound_mode, "on"))
 				{
-					PORTC |= (1<<7);
-					USART_send_str("Sound ON\r\n");
+					PORTD |= (1<<6);
+					USART_send_str("Sound OFF\r\n");
 				}
 				else if (strcmp(sound_mode, "off"))
 				{
-					PORTC &= ~(1<<7);
-					USART_send_str("Sound OFF\r\n");
+					PORTD &= ~(1<<6);
+					USART_send_str("Sound ON\r\n");
 				}
 
 				data_ready = 0;
