@@ -24,7 +24,7 @@ void buttons()
     if (debounce(6)) edit_light(); // +25% brightness
 
     // press button 2 (to PC5)
-    if (debounce(5)) PORTC ^= (1 << 7); // invert pin sound
+    if (debounce(5)) PORTD ^= (1 << 6); // invert pin sound
 
     // press button 3 (to PC)
     //if (debounce(4)) { }

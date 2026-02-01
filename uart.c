@@ -62,6 +62,7 @@ void get_usart_command()
 {
 		if (data_ready)
 		{
+
 			if (strncmp((char*)data_buffer,"gamma",5) == 0) // сравниваем первые символы
 			{
 
@@ -76,7 +77,7 @@ void get_usart_command()
 			if (strncmp((char*)data_buffer,"time",4) == 0) 
 			{
 				char string[9];
-				sprintf(string, "%02d:%02d:%02d\r\n", hour, min, sec);
+				sprintf(string, "\033[1;33m %02d:%02d:%02d \033[0m\r\n", hour, min, sec);
 				USART_send_str(string);
 
 				data_ready = 0;
@@ -87,7 +88,7 @@ void get_usart_command()
 			if (strncmp((char*)data_buffer,"st",2) == 0) 
 			{
 
-				char *command = strtok(data_buffer," ");
+				char *command = strtok((char*)data_buffer," ");
 				char *st_hour = strtok(NULL, ",");
 				char *st_min = strtok(NULL, ",");
 
@@ -108,19 +109,19 @@ void get_usart_command()
 			if (strncmp((char*)data_buffer,"snd",3) == 0) 
 			{
 
-				char *command = strtok(data_buffer," ");
+				char *command = strtok((char*)data_buffer," ");
 				char *sound_mode = strtok(NULL, ",");
 
 
 				if (strcmp(sound_mode, "on"))
 				{
 					PORTD |= (1<<6);
-					USART_send_str("Sound OFF\r\n");
+					USART_send_str("\033[0;31m Sound OFF \033[0m\r\n");
 				}
 				else if (strcmp(sound_mode, "off"))
 				{
 					PORTD &= ~(1<<6);
-					USART_send_str("Sound ON\r\n");
+					USART_send_str("\033[0;32m Sound ON \033[0m\r\n");
 				}
 
 				data_ready = 0;

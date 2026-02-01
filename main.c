@@ -40,13 +40,17 @@ int main(void)
 	
 	sei();
 	timer_ini();
-//	i2c_init();		
 	buttons_init();
-	LCD1602_ini();
-	USART_init(103); //9600
+		_delay_ms(100);
 
+	i2c_init();		
+		_delay_ms(100);
+
+	LCD1602_ini();
+		_delay_ms(100);
+
+	USART_init(103); //9600
 	USART_send_str("UART EN");
-	set_time(15,43);
 
 //--------------------- interrupt -------------------
 
@@ -59,7 +63,7 @@ int main(void)
 
 //------------------ ШИМ HV генератора --------------
 
-	uint16_t top = freq(2000,8); // 2 КГц / 8 предделитель для F_CPU 8 МГц
+	uint16_t top = freq(3000,8); // 2 КГц / 8 предделитель для F_CPU 8 МГц
 		pwm_init(top);//шим HV генератора (PD4,PD50
 		
 	uint16_t dt1 = pwm_proc(50); // 50% скважность
@@ -74,16 +78,17 @@ int main(void)
 uint32_t start[3] = {0}; // нулевые стартовые значения 
 						 // для неблокирующих задержек
 
-
+set_lcd_pos(0,0);
+send_lcd_ptr_str("TEST"); //мк Рентген
 
 while(1)
 	{	
 
 	buttons();
 	OCR0 = pwm_proc(light);
-/*
+
 	//----------------time to lcd ----------------
-	if (ms_cnt - start[1] >= 500)
+	/*if (ms_cnt - start[1] >= 500)
 		{		
 			time_to_lcd(4,0);
 				
@@ -92,7 +97,7 @@ while(1)
 
 */
 	//-------------- Гамма счетчик-------------------
-
+/*
 
 	if (gamma_flag)
 		{
@@ -149,11 +154,12 @@ while(1)
 		gamma_array[index_garray]&= ~(1<<index_gbit); //1 сек - обнуление бита из гамма массива
 		
 		}
-
-
+*/
 //--------------- USART --------------- 
 
 	get_usart_command();
+
+
 
 	}
 
