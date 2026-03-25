@@ -1,15 +1,15 @@
 #ifndef DS1307_H_
 #define DS1307_H_
 
-
+#define TIMEOUT 100000
 
 #include "main.h"
 
 void i2c_init(void);
-void set_time(uint32_t h,uint32_t m);
-void time_to_lcd();
+void set_time(int h,int m);
+int time_to_lcd();
 
-extern unsigned char hour,min,sec;
+extern uint8_t hour,min,sec;
 
 
 #endif /* DS1307_H_ */

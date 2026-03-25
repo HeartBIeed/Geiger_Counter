@@ -60,6 +60,7 @@ void USART_echo()
 	
 void get_usart_command()
 {
+
 		if (data_ready)
 		{
 
@@ -67,7 +68,7 @@ void get_usart_command()
 			{
 
 				char string[32];
-				sprintf(string, "Gamma: %d uR\r\n",(int)num_gm_cnt);
+				sprintf(string, "\033[0;31m Gamma: %d uR \033[0m\r\n",num_ones(gamma_array));
 				USART_send_str(string);
 
 				data_ready = 0;

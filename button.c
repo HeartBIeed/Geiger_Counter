@@ -1,6 +1,6 @@
 #include "button.h"
 
-volatile int light = 25;
+volatile int light = 50;
 
 
 void buttons_init()
@@ -21,7 +21,10 @@ void buttons_init()
 void buttons()
 {
     // press button 1 (to PC6)
-    if (debounce(6)) edit_light(); // +25% brightness
+    if (debounce(6)) 
+    {
+        edit_light();
+    } // +25% brightness
 
     // press button 2 (to PC5)
     if (debounce(5)) PORTD ^= (1 << 6); // invert pin sound
@@ -39,7 +42,7 @@ void edit_light() // яркость дисплея
     {             // изменяет по кругу % скважности ШИМ на PB3
         light = light + 25;   
         if (light >= 110) light = 0;   
-
+        OCR0 = pwm_proc(light);
     } 
 
 

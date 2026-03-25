@@ -17,7 +17,8 @@
 #include "timer.h"
 #include "button.h"
 
-extern char num_gm_cnt[4];
+int num_ones(unsigned char array[]);   
+extern uint8_t gamma_array[5];
 
 #endif /* MAIN_H_ */
 
