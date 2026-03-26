@@ -12,7 +12,7 @@ void buttons_init()
         DDRB |= (1<<2); // out
         PORTB |= (1<<2); // up
 
-        DDRD |= (1<<6); // snd pin to input
+        DDRD &= ~(1<<6); // snd pin to input
 
 
     }
@@ -23,20 +23,34 @@ void buttons()
     // press button 1 (to PC6)
     if (debounce(6)) 
     {
-        edit_light();
-    } // +25% brightness
+    edit_light(); // +25% brightness
+    } 
+    else {
+        asm("nop");
+    }
 
-    // press button 2 (to PC5)
-    if (debounce(5)) PORTD ^= (1 << 6); // invert pin sound
 
+ /*  // press button 2 (to PC5)
+    if (debounce(5)) 
+    {
+    PORTD ^= (1 << 6); // invert pin sound
+    } else {
+    asm("nop");
+    }
+*/
     // press button 3 (to PC)
-    //if (debounce(4)) { }
-
+  /*  if (debounce(4)){
+        edit_HV();
+    } else {
+    asm("nop");
+    }s
+*/
     // press button 4 (to PC)
     //if (debounce(3)) { }
 
-    else asm("nop");
+ //   else asm("nop");
 }
+
 
 void edit_light() // яркость дисплея 
     {             // изменяет по кругу % скважности ШИМ на PB3
@@ -44,7 +58,6 @@ void edit_light() // яркость дисплея
         if (light >= 110) light = 0;   
         OCR0 = pwm_proc(light);
     } 
-
 
 int debounce(uint8_t pin) // обработка нажатия кнопки (дребезг + состояние)
     {
@@ -78,15 +91,16 @@ int debounce(uint8_t pin) // обработка нажатия кнопки (д�
                 if (BUTPIN & (1 << pin)) 
                     {
                         current_state[pin] = RELEASED; // состояние "отпущено"
+                        return 0;
 
                     }
             }
         break;
 
-        default:
+  //      default:
 
-        current_state[pin] = RELEASED;
-        break;
+   //     current_state[pin] = RELEASED;
+   //     break;
         }
         
     return 0;

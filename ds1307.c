@@ -87,7 +87,6 @@ void lcd_print_number(uint8_t num)
 
 int time_to_lcd(int x,int y)
 	{
-		cli();
 
 	i2c_init();
 
@@ -120,7 +119,6 @@ int time_to_lcd(int x,int y)
 	lcd_print_number(min);
 	send_lcd_char(0x3A);
 	lcd_print_number(sec);
-	sei();
 
 	}
 
