@@ -16,9 +16,8 @@
 #include "uart.h"
 #include "timer.h"
 #include "button.h"
-
-int num_ones(unsigned char array[]);   
-extern uint8_t gamma_array[5];
+#include "i2c.h"
+#include "gamma.h"
 
 #endif /* MAIN_H_ */
 

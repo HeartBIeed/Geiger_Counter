@@ -13,10 +13,10 @@ enum button_state{
     };
 
 
-void buttons();
-void buttons_init();
-int debounce(uint8_t pin);
-void edit_light();
+void Buttons_Handler();
+void Buttons_init();
+int Debounce(uint8_t pin);
+void Edit_LCD_bright();
 
 extern volatile int light;
 
