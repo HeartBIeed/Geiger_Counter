@@ -1,11 +1,9 @@
 #include "gamma.h"
 
 volatile uint8_t gamma_flag = 0; //флаг события
-
-uint8_t gamma_array[5]={0}; // массив из 40 битов для гамма событий
+uint8_t  gamma_array[5]={0}; // массив из 40 битов для гамма событий
 uint8_t index_garray = 0; // индекс элемента гамма массива
 uint8_t index_gbit = 0; // индекс бита
-char num_gm_cnt[7]="00"; // строка числа результата гамма счетчика
 
 void INT_init(){
 
@@ -45,6 +43,7 @@ static uint32_t start[2] = {0};
 	LCD1602_sendChar('G');
 
 	LCD1602_setPos(6,1);
+	char num_gm_cnt[7]="00";
 	sprintf(num_gm_cnt,"%d uR",GAMMA_NumOnes(gamma_array)); // запись int в строку
 	LCD1602_sendString(num_gm_cnt);
 
