@@ -61,7 +61,7 @@ if (data_ready)
 	{
 
 	char string[32];
-	sprintf(string, "\033[0;31m Gamma: %d uR \033[0m\r\n",GAMMA_NumOnes(gamma_array));
+	sprintf(string, "\033[0;31m Gamma: %d uR \033[0m\r\n",Radiation());
 	USART_send_str(string);
 
 	data_ready = 0;

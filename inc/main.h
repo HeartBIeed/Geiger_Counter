@@ -10,14 +10,16 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "uart.h"
+#include "i2c.h"
+#include "timer.h"
+#include "pwm.h"
+
 #include "lcd1602.h"
 #include "ds1307.h"
-#include "pwm.h"
-#include "uart.h"
-#include "timer.h"
+
 #include "button.h"
-#include "i2c.h"
-#include "gamma.h"
+#include "gcounter.h"
 
 #endif /* MAIN_H_ */
 
